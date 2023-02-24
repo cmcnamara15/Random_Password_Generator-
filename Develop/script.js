@@ -25,9 +25,14 @@ var password =''
 // var computerChoice = allChar[index];
 // console.log(allChar[index])
 
-function randomChar([]) {
-  return Math.random() -0.5;
+function selectRandomElement(characters) {
+  var index = Math.floor(Math.random() * characters.length)
+  return characters[index];
 }
+
+
+
+
 function generatePassword() {
   console.log("clicked the button")
   var userinput = prompt("Please enter a number between 8 and 128");
@@ -42,17 +47,15 @@ function generatePassword() {
     console.log(typeof userinput)
     userinput = Number(userinput);
     console.log(typeof userinput);
-  if(affirm) {
-    allChar.sort(randomChar)
-   
-    var index = Math.floor(Math.random() * allChar.length);
-    var index = allChar[index];
-    console.log(index)
-  }
+    if(affirm) {
+     for(var i=0; i < userinput; i++) {
+     password += selectRandomElement(allChar)
+     }
+    }
 
-    
-  console.log(password)
-  return password;
+      
+    console.log(password)
+    return password;
     }
 }
 
