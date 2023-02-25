@@ -18,8 +18,9 @@ console.log(specialChar)
 
 var allChars = numbers.concat(uppercase, lowercase, specialChar);
 
+
 function selectRandomElement(characters) {
-  var index = Math.floor(Math.random() * characters.length)
+  var index = Math.floor(Math.random() * characters.length) 
   return characters[index];
 }
 
@@ -27,17 +28,20 @@ function generateCharacterOptions() {
   var allChars = []; 
   var confirmNumbers = window.confirm("Do you want numbers in your password?");
   if (confirmNumbers) {
-  allChars.concat(numbers);}
-  else {}
+  allChars.push(numbers)}
+  else{}
+  // console.log(allChars);
   var affirmLetters = window.confirm("Do you want letters in your password?");
   if(affirmLetters){
-  allChars.concat(uppercase, lowercase);}
-  else {}
+  allChars.push(uppercase, lowercase);}
+  else{}
+  // console.log(allChars);
   var affirmSpecialChar = window.confirm("Do you want special characters in your Password?");
   if(affirmSpecialChar){
-  allChars.concat(specialChar);}
+  allChars.push(specialChar);}
   else {}
-  return allChars
+  // console.log(allChars);
+  return allChars;
 }
 
 function generatePassword() {
@@ -50,11 +54,12 @@ function generatePassword() {
   
   else {
     // var affirm = window.confirm("Confirm to include lowercase & uppercase letters. numeric and special characters.");
-    var affirm = generateCharacterOptions(); 
-    console.log(userinput);
-    console.log(typeof userinput)
+    var affirm = generateCharacterOptions(allChars);
+    console.log(allChars);
+    // console.log(userinput);
+    // console.log(typeof userinput)
     userinput = Number(userinput);
-    console.log(typeof userinput);
+    // console.log(typeof userinput);
     if(affirm) {
       var password =''
       for(var i=0; i < userinput; i++) {
@@ -65,16 +70,13 @@ function generatePassword() {
     return password;
     }
 }
-
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
- 
 }
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword); 
 
