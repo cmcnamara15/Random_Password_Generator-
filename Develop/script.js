@@ -16,22 +16,26 @@ var specialChar = [
   "/"]
 console.log(specialChar)
 
-var allChar = numbers.concat(uppercase, lowercase, specialChar);
-console.log(allChar)
-
-var password =''
-
-// var index = Math.floor(Math.random() * allChar.length);
-// var computerChoice = allChar[index];
-// console.log(allChar[index])
+var allChars = numbers.concat(uppercase, lowercase, specialChar);
+// console.log(allChar)
 
 function selectRandomElement(characters) {
   var index = Math.floor(Math.random() * characters.length)
   return characters[index];
 }
 
-
-
+function generateCharacterOptions() {
+  var allChars = []; // start empty 
+  var confirmNumbers = window.confirm("Do you want numbers in your password?");
+  allChars.concat(numbers);
+  var affirmLetters = window.confirm("Do you want letters in your password?");
+  if(affirmLetters){
+  allChars.concat(uppercase, lowercase);}
+  var affirmSpecialChar = window.confirm("Do you want special characters in your Password?");
+  if(affirmSpecialChar){
+  allChars.concat(specialChar);}
+  return allChars
+}
 
 function generatePassword() {
   console.log("clicked the button")
@@ -42,18 +46,18 @@ function generatePassword() {
    alert("Please select proper length")}
   
   else {
-    var affirm = window.confirm("Confirm to include lowercase & uppercase letters. numeric and special characters.");
+    // var affirm = window.confirm("Confirm to include lowercase & uppercase letters. numeric and special characters.");
+    var affirm = generateCharacterOptions(); 
     console.log(userinput);
     console.log(typeof userinput)
     userinput = Number(userinput);
     console.log(typeof userinput);
     if(affirm) {
-     for(var i=0; i < userinput; i++) {
-     password += selectRandomElement(allChar)
+      var password =''
+      for(var i=0; i < userinput; i++) {
+     password += selectRandomElement(allChars)
      }
     }
-
-      
     console.log(password)
     return password;
     }
@@ -71,18 +75,3 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword); 
 
-
-// inserted this at line 33
-// var index = Math.floor(Math.random() * allChar);
-// console.log(index)
-// }
-// for(var i = 0; i < charlength; i++) {
-// const index = math.floor
-// }
-
-// for (var i = 0; i < userinput; i++) {
-//   password = password + allChar[randomChar()];
-
-// for (var i = 0; i < userinput.length; i++) {
-//   password = password + allChar[i];
-//   console.log(password);
