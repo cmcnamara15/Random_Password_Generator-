@@ -1,6 +1,9 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+// Wondering if there was a way to write an array without typing out each letter I found 
+// that there was. Using Array.from and choosing a length I was able to reference numeric 
+// places for those characters from unicode character chart and pull them into an Array!
 var numbers = Array.from({length: 10}, (_, i) => String.fromCharCode(48 + i));
 console.log(numbers)
 
@@ -10,24 +13,31 @@ console.log(uppercase);
 var lowercase = Array.from({length: 26}, (_, i) => String.fromCharCode(97 + i));
 console.log(lowercase);
 
+// that method proved to be difficult for special characters because they are not 
+// organized sequently on the chart. So I decided to type them out
 var specialChar = [
   "!", "@", "#", "$", "%", "^", "&","*", "(", ")", "_", "-", "+", "=", 
   "~", "`", "{", "}", "[", "]", "|", ":", ";", "<", ">", "?", ".", ",",
   "/"]
 console.log(specialChar)
 
-var allChars = numbers.concat(uppercase, lowercase, specialChar);
-// console.log(allChar)
 
+var allChars = numbers.concat(uppercase, lowercase, specialChar);
+// console.log(allChar)--- Using the .concat method I combined these arrays globally/
+
+// After much struggle trying to use .sort to randomize the array  decided to create a function with 
+// hope that it could be reusable.
 function selectRandomElement(characters) {
   var index = Math.floor(Math.random() * characters.length)
   return characters[index];
 }
 
+
 function generateCharacterOptions() {
-  var allChars = []; // start empty 
+  var allChars = []; 
   var confirmNumbers = window.confirm("Do you want numbers in your password?");
-  allChars.concat(numbers);
+  if (confirmNumbers) {
+  allChars.concat(numbers);}
   var affirmLetters = window.confirm("Do you want letters in your password?");
   if(affirmLetters){
   allChars.concat(uppercase, lowercase);}
