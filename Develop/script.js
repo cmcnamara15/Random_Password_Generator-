@@ -16,7 +16,8 @@ var specialChar = [
   "/"]
 console.log(specialChar)
 
-var allChars = numbers.concat(uppercase, lowercase, specialChar);
+var allChars;
+// numbers.concat(uppercase, lowercase, specialChar);
 
 
 function selectRandomElement(characters) {
@@ -25,20 +26,20 @@ function selectRandomElement(characters) {
 }
 
 function generateCharacterOptions() {
-  var allChars = []; 
+  allChars = []; 
   var confirmNumbers = window.confirm("Do you want numbers in your password?");
   if (confirmNumbers) {
-  allChars.push(numbers)}
+  allChars = allChars.concat(numbers)}
   else{}
   console.log(allChars);
   var affirmLetters = window.confirm("Do you want letters in your password?");
   if(affirmLetters){
-  allChars.push(uppercase, lowercase);}
+  allChars = allChars.concat(uppercase, lowercase);}
   else{}
   console.log(allChars);
   var affirmSpecialChar = window.confirm("Do you want special characters in your Password?");
   if(affirmSpecialChar){
-  allChars.push(specialChar);}
+  allChars = allChars.concat(specialChar);}
   else {}
   return allChars;
 }
@@ -52,9 +53,9 @@ function generatePassword() {
    alert("Please select proper length")}
   
   else {
+    userinput = Number(userinput);
     var affirm = generateCharacterOptions();
     console.log(affirm)
-    userinput = Number(userinput);
     if(affirm) {
       var password =''
       for(var i=0; i < userinput; i++) {
