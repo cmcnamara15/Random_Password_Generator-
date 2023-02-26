@@ -30,17 +30,16 @@ function generateCharacterOptions() {
   if (confirmNumbers) {
   allChars.push(numbers)}
   else{}
-  // console.log(allChars);
+  console.log(allChars);
   var affirmLetters = window.confirm("Do you want letters in your password?");
   if(affirmLetters){
   allChars.push(uppercase, lowercase);}
   else{}
-  // console.log(allChars);
+  console.log(allChars);
   var affirmSpecialChar = window.confirm("Do you want special characters in your Password?");
   if(affirmSpecialChar){
   allChars.push(specialChar);}
   else {}
-  // console.log(allChars);
   return allChars;
 }
 
@@ -53,17 +52,13 @@ function generatePassword() {
    alert("Please select proper length")}
   
   else {
-    // var affirm = window.confirm("Confirm to include lowercase & uppercase letters. numeric and special characters.");
-    var affirm = generateCharacterOptions(allChars);
-    console.log(allChars);
-    // console.log(userinput);
-    // console.log(typeof userinput)
+    var affirm = generateCharacterOptions();
+    console.log(affirm)
     userinput = Number(userinput);
-    // console.log(typeof userinput);
     if(affirm) {
       var password =''
       for(var i=0; i < userinput; i++) {
-     password += selectRandomElement(allChars)
+      password += selectRandomElement(allChars)
      }
     }
     console.log(password)
@@ -96,3 +91,5 @@ generateBtn.addEventListener("click", writePassword);
 // ___Comments for line 21___
 // After much struggle trying to use .sort to randomize the array  decided to create a function with 
 // hope that it could be reusable.
+
+// if (userinput >= 8 && userinput <= 136)
