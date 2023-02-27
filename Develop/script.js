@@ -39,16 +39,21 @@ function generateCharacterOptions() {
   allChars = allChars.concat(numbers)}
 
   console.log(allChars);
-  var affirmLetters = window.confirm("Do you want letters in your password?");
+  var affirmLetters = window.confirm("Do you want uppercase letters in your password?");
   if(affirmLetters){
-  allChars = allChars.concat(uppercase, lowercase);}
+  allChars = allChars.concat(uppercase);}
+
+  console.log(allChars);
+  var affirmLetters = window.confirm("Do you want lowercase letters in your password?");
+  if(affirmLetters){
+  allChars = allChars.concat(lowercase);}
  
   console.log(allChars);
   var affirmSpecialChar = window.confirm("Do you want special characters in your Password?");
   if(affirmSpecialChar){
   allChars = allChars.concat(specialChar);}
   while(confirmNumbers === false && affirmLetters === false && affirmSpecialChar === false){
-    alert("please choose at least one character set")
+    alert("please choose at least one character set");
   }
   return allChars;
 }
@@ -59,9 +64,11 @@ function generatePassword() {
   if(userinfo < 8) {
   alert("Please enter a proper length")}
   else if (userinfo > 128) {
+  // while(userinput >= 8 && userinput <= 136) {
   alert("Please select proper length")}
-  // else if (userinfo != Number){
-  // alert("Please enter a number")}
+  // else if (isNaN(userinfo) == false ) {
+  // alert("Please enter a number")
+  // }
   
   else {
     userinfo = Number(userinfo);
