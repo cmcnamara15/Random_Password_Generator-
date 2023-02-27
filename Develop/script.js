@@ -37,18 +37,18 @@ function generateCharacterOptions() {
   var confirmNumbers = window.confirm("Do you want numbers in your password?");
   if (confirmNumbers) {
   allChars = allChars.concat(numbers)}
-  else{}
+
   console.log(allChars);
   var affirmLetters = window.confirm("Do you want letters in your password?");
   if(affirmLetters){
   allChars = allChars.concat(uppercase, lowercase);}
-  else{}
+ 
   console.log(allChars);
   var affirmSpecialChar = window.confirm("Do you want special characters in your Password?");
   if(affirmSpecialChar){
   allChars = allChars.concat(specialChar);}
-  else {
-    alert("Please choose at least one character set")
+  while(confirmNumbers === false && affirmLetters === false && affirmSpecialChar === false){
+    alert("please choose at least one character set")
   }
   return allChars;
 }
