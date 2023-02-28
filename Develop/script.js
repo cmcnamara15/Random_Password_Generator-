@@ -39,34 +39,36 @@ function generateCharacterOptions() {
   allChars = allChars.concat(numbers)}
 
   console.log(allChars);
-  var affirmLetters = window.confirm("Do you want uppercase letters in your password?");
-  if(affirmLetters){
+  var affirmUppercaseLetters = window.confirm("Do you want uppercase letters in your password?");
+  if(affirmUppercaseLetters){
   allChars = allChars.concat(uppercase);}
 
   console.log(allChars);
-  var affirmLetters = window.confirm("Do you want lowercase letters in your password?");
-  if(affirmLetters){
+  var affirmLowercaseLetters = window.confirm("Do you want lowercase letters in your password?");
+  if(affirmLowercaseLetters){
   allChars = allChars.concat(lowercase);}
  
   console.log(allChars);
   var affirmSpecialChar = window.confirm("Do you want special characters in your Password?");
   if(affirmSpecialChar){
   allChars = allChars.concat(specialChar);}
-  while(confirmNumbers === false && affirmLetters === false && affirmSpecialChar === false){
-    alert("please choose at least one character set");
-  }
+  
+  if(confirmNumbers === false && affirmUppercaseLetters === false && affirmLowerCaseLetters && affirmSpecialChar === false){
+    alert("please choose at least one character set")
+    return;}
   return allChars;
 }
 
 function generatePassword() {
   console.log("clicked the button")
   var userinfo = prompt("Please enter a number between 8 and 128");
-  if(userinfo < 8) {
-  alert("Please enter a proper length")}
-  else if (userinfo > 128) {
-  // while(userinput >= 8 && userinput <= 136) {
-  alert("Please select proper length")}
-  // else if (isNaN(userinfo) == false ) {
+  if (isNaN(userinfo)){
+  alert("Password length must be a number")
+  return null;}
+  if(userinfo < 8 || userinfo > 128) {
+  alert("Please enter a proper length")
+  return null;}
+  // else if (typeof userinfo == "number" && userinfo > 8 && userinfo<128) {
   // alert("Please enter a number")
   // }
   
@@ -96,4 +98,3 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword); 
 
 
-// if (userinput >= 8 && userinput <= 136)
